@@ -1,0 +1,35 @@
+h1 {
+    color: blue;
+    background-color: rgb(154, 248, 248);
+    /* background-image: url('images/image-2.jpg'); */
+    text-align: center;
+    font-size: 20px;
+}
+
+/* p {
+    color: aqua;
+    background-color: blue;
+    text-align: right;
+    font-size: large;
+} */
+
+/* h3 {
+    color: blueviolet;
+    background-color: aqua;
+    font-size: 50px;
+}
+
+ul {
+    background-color: cornsilk;
+} */
+
+.par-1 {
+    color: brown;
+    background-color: darkgray;
+}
+
+.head-3 {
+    color: blueviolet;
+    background-color: aqua;
+    font-size: 50px;
+}
