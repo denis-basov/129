@@ -1,9 +1,16 @@
+* {
+    margin: 0;
+    /* padding: 0; */
+}
+
 h1 {
     color: blue;
     background-color: rgb(154, 248, 248);
-    /* background-image: url('images/image-2.jpg'); */
+    background-image: url(image-1.jpg);
     text-align: center;
     font-size: 20px;
+    border: 3px solid rgb(247, 0, 255);
+    margin: 30px;
 }
 
 /* p {
@@ -26,10 +33,65 @@ ul {
 .par-1 {
     color: brown;
     background-color: darkgray;
+    margin: 20px;
 }
 
 .head-3 {
     color: blueviolet;
     background-color: aqua;
     font-size: 50px;
+}
+
+
+/* задаем стили для контейнера с пользователями */
+.users {
+    background-color: aquamarine;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    border: 3px solid red;
+    border-radius: 10px;
+    margin: 30px;
+}
+
+.user {
+    margin: 10px;
+    background-color: blueviolet;
+    border: 3px solid red;
+}
+
+.user-2 {
+    background-color: rgb(43, 104, 226);
+    border: 3px solid rgb(250, 164, 164)
+}
+
+
+.users img {
+    width: 200px;
+}
+
+.pic-1 {
+    border: 8px solid #1b1d89;
+    border-radius: 5px;
+}
+
+/* форма */
+.reg-form {
+    border: 5px solid rgb(115, 115, 247);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 15px;
+}
+
+.list-1 {
+    border: 3px solid olivedrab;
+    margin: 20px;
+    padding: 15px;
+}
+
+.list-1 li {
+    /* элементы списка у которых родитель имеет класс list-1 */
+    margin: 10px;
+    background-color: rgb(154, 203, 246);
+    padding: 10px;
 }
