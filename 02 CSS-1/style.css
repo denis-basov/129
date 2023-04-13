@@ -3,14 +3,45 @@
     /* padding: 0; */
 }
 
+html {
+    font-family: 'Sofia Sans Condensed', sans-serif;
+}
+
+body {
+    background-color: rgb(212, 253, 253);
+}
+
+/* #head-1 {
+    border: 3px solid rgb(38, 255, 0);
+}
+
+.head-1 {
+    border: 3px solid rgb(42, 30, 147);
+} */
+
 h1 {
     color: blue;
     background-color: rgb(154, 248, 248);
-    background-image: url(image-1.jpg);
-    text-align: center;
-    font-size: 20px;
-    border: 3px solid rgb(247, 0, 255);
+    /* background-image: url(image-1.jpg); */
+    border: 3px solid transparent;
     margin: 30px;
+
+    /* стили для текста*/
+    text-align: center;
+    text-decoration: overline;
+    text-transform: capitalize;
+    letter-spacing: 7px;
+
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 1000;
+}
+
+h1:hover {
+    color: rgb(250, 164, 164);
+    background-color: chartreuse;
+    border: 3px solid rgb(80, 102, 207);
 }
 
 /* p {
@@ -31,15 +62,22 @@ ul {
 } */
 
 .par-1 {
-    color: brown;
-    background-color: darkgray;
+    color: rgb(9, 4, 4);
+    background-color: rgb(227, 225, 225);
     margin: 20px;
 }
 
+.par-1 .important {
+    font-weight: 800;
+}
+
 .head-3 {
-    color: blueviolet;
-    background-color: aqua;
-    font-size: 50px;
+    background-color: blueviolet;
+    color: whitesmoke;
+    text-align: right;
+    text-decoration: line-through;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 
@@ -54,20 +92,25 @@ ul {
     margin: 30px;
 }
 
-.user {
+.users .user {
     margin: 10px;
     background-color: blueviolet;
     border: 3px solid red;
 }
 
-.user-2 {
-    background-color: rgb(43, 104, 226);
-    border: 3px solid rgb(250, 164, 164)
+.users .user img {
+    width: 200px;
+    height: 100px;
 }
 
+.users .user h2 {
+    color: rgb(247, 0, 255);
+}
 
-.users img {
-    width: 200px;
+.users .user-2 {
+    /* class="user user-2" */
+    background-color: rgb(43, 104, 226);
+    border: 3px solid rgb(250, 164, 164)
 }
 
 .pic-1 {
