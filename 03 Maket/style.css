@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* 16px - 100%  */
+    /* 10px - 62.5% */
+
+    /*  1rem = 16px  */
+    /*  1rem = 10px  */
+    font-size: 62.5%;
+    color: #E8E8E8;
+    font-family: 'Alata', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(34, 27, 54);
+    background-image: url('Background.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+
+/********************************************************************************************/
+/**************************************** HEADER ********************************************/
+/********************************************************************************************/
+header {
+    max-width: 142rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 6rem;
+}
+
+header .logo {
+    font-size: 2.7rem;
+}
+
+header nav {
+    display: flex;
+    padding: 1rem 3.6rem;
+    gap: 3.2rem;
+}
+
+header nav a {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: #E8E8E8;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+header nav a:hover {
+    background: #402166;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 26px;
+}
+
+/********************************************************************************************/
+/**************************************** MAIN **********************************************/
+/********************************************************************************************/
+main {
+    max-width: 142rem;
+    padding: 2rem 10rem;
+    display: grid;
+    grid-template-columns: 48rem;
+    justify-content: end;
+    font-size: 1.6rem;
+}
+
+main .title {
+    margin-bottom: 3rem;
+}
+
+main .title h1,
+main .title h2 {
+    font-size: 5.2rem;
+    font-weight: 700;
+    color: #E8E8E8;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    line-height: 5.2rem;
+}
+
+main .title .top,
+main .title .bottom {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5D3974;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+main .info {
+    margin-bottom: 3rem;
+}
