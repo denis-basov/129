@@ -1,6 +1,7 @@
 * {
     margin: 0;
     /* padding: 0; */
+    box-sizing: border-box;
 }
 
 html {
@@ -102,23 +103,34 @@ ul {
 /* задаем стили для контейнера с пользователями */
 .users {
     background-color: aquamarine;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    border: 3px solid red;
+    /* padding: 20px; */
+    /* width: 900px; */
+    /* height: 100px; */
+    /* border: 3px solid red; */
     border-radius: 10px;
     margin: 30px;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+
 }
 
 .users .user {
-    margin: 10px;
-    background-color: blueviolet;
+    /* margin: 10px; */
+    background-color: rgb(215, 189, 239);
     border: 3px solid red;
+    padding: 10px;
+    max-width: 200px;
+    /* margin: 10px; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .users .user img {
-    width: 200px;
-    height: 100px;
+    width: 80%;
 }
 
 .users .user h2 {
@@ -127,7 +139,7 @@ ul {
 
 .users .user-2 {
     /* class="user user-2" */
-    background-color: rgb(43, 104, 226);
+    background-color: rgb(184, 206, 248);
     border: 3px solid rgb(250, 164, 164)
 }
 
@@ -226,7 +238,7 @@ ul {
     animation-name: my-animation;
     animation-duration: 4s;
     animation-delay: 1s;
-    animation-iteration-count: infinite;
+    /* animation-iteration-count: infinite; */
 }
 
 @keyframes my-animation {
@@ -259,4 +271,47 @@ ul {
         background-image: url(images/image3.jpg);
         left: 0;
     }
+}
+
+
+/* flexbox */
+.flex-container {
+    max-width: 1000px;
+    margin: 20px;
+    padding: 20px;
+    background-color: antiquewhite;
+
+    display: flex;
+    /* gap: 10px; */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.flex-container .flex-el {
+    background-color: aqua;
+    padding: 20px;
+    border: 1px solid tan;
+}
+
+/* grid */
+.grid-container {
+    max-width: 1000px;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(208, 249, 218);
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-rows: 100px 150px 200px; */
+    /* gap: 20px; */
+    row-gap: 10px;
+    column-gap: 20px;
+    /* justify-items: end;
+    align-items: end; */
+}
+
+.grid-container .grid-el {
+    background-color: rgb(248, 220, 211);
+    padding: 20px;
+    border: 1px solid tan;
 }
