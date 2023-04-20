@@ -1,0 +1,23 @@
+:root {
+    /* colors */
+    --txt-white: #E8E8E8;
+    --txt-gray: #575757;
+    --txt-lightgray: #C0C0C0;
+    --acc-purple: #5D3974;
+    --btn-bg: #402166;
+    --btn-bg-dark: #1E0042;
+    --main-bg: #221A37;
+
+    /* font sizes */
+    --s-tiny: 10px;
+    --s-mini: 12px;
+    --s-main: 14px;
+    --s-subtitle: 20px;
+    --s-subtitle-r: 22px;
+    --s-title: 52px;
+    --s-logo: 27px;
+    
+    /* fonts */
+    --header-font: 'Alata', sans-serif;
+    --main-font: 'Aharoni', sans-serif;
+}
