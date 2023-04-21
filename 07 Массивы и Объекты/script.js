@@ -227,32 +227,32 @@ orders = [1,2,3];
 console.log(orders);
 */
 
-let users = [
-    {
-        id: 1,
-        userName: 'Иван',
-        age: 22,
-        country: 'Россия',
-        hobby: ['Спать', 'Есть', 'Гулять', 'Отдыхать'],
-        isAdmin: false
-    },
-    {
-        id: 2,
-        userName: 'Мария',
-        age: 11,
-        country: 'Россия',
-        hobby: 'Читать',
-        isAdmin: false
-    },
-    {
-        id: 3,
-        userName: 'Анна',
-        age: 43,
-        country: 'Россия',
-        hobby: 'Работать',
-        isAdmin: true
-    }   
-];
+// let users = [
+//     {
+//         id: 1,
+//         userName: 'Иван',
+//         age: 22,
+//         country: 'Россия',
+//         hobby: ['Спать', 'Есть', 'Гулять', 'Отдыхать'],
+//         isAdmin: false
+//     },
+//     {
+//         id: 2,
+//         userName: 'Мария',
+//         age: 11,
+//         country: 'Россия',
+//         hobby: 'Читать',
+//         isAdmin: false
+//     },
+//     {
+//         id: 3,
+//         userName: 'Анна',
+//         age: 43,
+//         country: 'Россия',
+//         hobby: 'Работать',
+//         isAdmin: true
+//     }   
+// ];
 // console.log(users);
 // let user1 = users[0];
 // console.log(user1);
@@ -263,24 +263,24 @@ let users = [
 // console.log( users[0].hobby );
 
 
-let domVDerevne = {
-    materialWall:'woods',
-    floor:3,
-    windows:5,
-    materialRoof: 'metal',
-    adress:{
-        city:'Okunevo',
-        street:'Cenralnaya',
-        dom: 36,
-    }
-}; 
+// let domVDerevne = {
+//     materialWall:'woods',
+//     floor:3,
+//     windows:5,
+//     materialRoof: 'metal',
+//     adress:{
+//         city:'Okunevo',
+//         street:'Cenralnaya',
+//         dom: 36,
+//     }
+// }; 
 
-domVDerevne.windows -= 1;
-domVDerevne.people = 6;
-domVDerevne.adress.corp = 1;
-domVDerevne.adress.dom = 17;
+// domVDerevne.windows -= 1;
+// domVDerevne.people = 6;
+// domVDerevne.adress.corp = 1;
+// domVDerevne.adress.dom = 17;
 
-console.log(domVDerevne);
+// console.log(domVDerevne);
 
 //console.log(domVDerevne);
 // 3 задание
@@ -298,4 +298,99 @@ console.log(domVDerevne);
 
 //console.log( domVDerevne.adress.city );
 
+
+// let domVDerevne = {
+//     materialWall:'woods',
+//     floor:3,
+//     windows:5,
+//     materialRoof: 'metal',
+//     key: 287981273,
+//     adress:{
+//         city:'Okunevo',
+//         street:'Cenralnaya',
+//         dom: 36,
+//     }
+// }; 
+
+// for(let key in domVDerevne){
+//     console.log(key, domVDerevne[key]);
+// }
+
+// let animals = ['ant', 'bison', 'camel', 'duck', 'elephant', "cat", "dog"];
+// for( let key in animals){
+//     console.log(key, animals[key]);
+// }
+
+
+let users = [
+    {
+        userName: 'Ivan999',
+        firstName: 'Ivan',
+        lastName: 'Ivanov',
+        age: 11,
+        phones: ['911', '01', '9874'],
+    },
+    {
+        userName: 'Anna123',
+        firstName: 'Anna',
+        lastName: 'Ivanova',
+        age: 13,
+        phones: ['456', '04', '546221'],
+    },
+    {
+        userName: 'Sergey19',
+        firstName: 'Sergey',
+        lastName: 'Petrov',
+        age: 33,
+        phones: ['2345', '3423', '345234'],
+    },
+    {
+        userName: 'Irina111',
+        firstName: 'Irina',
+        lastName: 'Petrova',
+        age: 42,
+        phones: ['231234', '78434', '65654323'],
+    },
+];
+
+
+/*
+let str = '<div class="users">';
+let i = 1;
+for( let user of users ){
+    let userStr = `<div class="user user-${i}">
+                        <h3>Логин клиента: ${user.userName}</h3>
+                        <h4>Контактные номера:</h4>
+                        <ul>
+                            <li>${user.phones.join('</li><li>')}</li>
+                        </ul>
+                        <p>Возраст: ${user.age}</p>
+                        <p>Имя: ${user.firstName}</p>
+                        <p>Фамилия: ${user.lastName}</p>
+                   </div>`;
+    str += userStr;              
+    i++;
+}
+str += '</div>';
+document.write(str);
+*/
+
+/*
+let str = '<div class="users">';
+for( let i = 0; i < users.length; i++ ){
+    let userStr = `<div class="user user-${i + 1}">
+                        <h3>Логин клиента: ${users[i].userName}</h3>
+                        <h4>Контактные номера:</h4>
+                        <ul>
+                            <li>${users[i].phones.join('</li><li>')}</li>
+                        </ul>
+                        <p>Возраст: ${users[i].age}</p>
+                        <p>Имя: ${users[i].firstName}</p>
+                        <p>Фамилия: ${users[i].lastName}</p>
+                   </div>`;
+    str += userStr;              
+}
+str += '</div>';
+document.write(str);
+*/
 
