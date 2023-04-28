@@ -88,7 +88,7 @@ let users = [
         userName: 'Ivan999',
         firstName: 'Ivan',
         lastName: 'Ivanov',
-        age: 11,
+        age: 21,
         phones: ['911', '01', '9874'],
     },
     {
@@ -102,14 +102,14 @@ let users = [
         userName: 'Sergey19',
         firstName: 'Sergey',
         lastName: 'Petrov',
-        age: 33,
+        age: 17,
         phones: ['2345', '3423', '345234'],
     },
     {
         userName: 'Irina111',
         firstName: 'Irina',
         lastName: 'Petrova',
-        age: 42,
+        age: 11,
         phones: ['231234', '78434', '65654323'],
     },
 ];
@@ -262,9 +262,114 @@ function returnArray(){
 console.log( returnArray() );*/
 
 // reduce
+
+// пример через for(of)
+// let result = 0;
+// for( let num  of numbers){
+//     result += num;
+// }
+// console.log(result);
+
+
 // let numbers = [4, 6, 4, 6, 8, 9, 3, 4, 5, 7, 44, 22];
 // let res = numbers.reduce(function(acc, num){
-//     console.log(acc, num);
-//     return acc + num;
-// });
+//     return acc + num; 
+//     // 1. 4 + 6 = 10
+//     // 2. 10 + 4 = 14
+//     // 3. 14 + 6 = 20
+// }, 0);
+// console.log(res);
+
+// let animals = ['ant', 'bison', 'camel', 'duck', 'elephant', "cat", "dog"];
+// '<li>ant</li><li>bison</li><li>camel</li>...'
+// 1. получить массив строк <li>ant</li>
+// 2. получить из массива строк строку '<li>ant</li><li>bison</li><li>camel</li>...'
+
+// 1 пример
+/*
+let res = animals.map(el => {
+    return `<li>${el}</li>`;
+});
+// ['<li>ant</li>', '<li>bison</li>', '<li>camel</li>', '<li>duck</li>',... ]
+res = res.reduce((acc, el) => {
+    return acc + el;
+    // 1. '<li>ant</li>' + '<li>bison</li>' = '<li>ant</li><li>bison</li>'
+    // 2. '<li>ant</li><li>bison</li>' +  '<li>camel</li>' = '<li>ant</li><li>bison</li><li>camel</li>'
+});
+console.log(res);*/
+
+// 2 пример
+//let res = animals.map(el => `<li>${el}</li>`).reduce((sum, el) => sum + el);
 //console.log(res);
+
+// 3 пример
+// let res = '';
+// for( let animal of animals){
+//     res += `<li>${animal}</li>`;
+// }
+// console.log(res);
+
+// 4 пример 
+// const str = animals.reduce((acc, item) => {
+//     return acc + `<li>${item}</li>`;
+// }, '');
+//const str = animals.reduce((acc, item) => acc + `<li>${item}</li>`, '');
+
+// 5 пример
+/*
+let str = animals.reduce((acc, animal) => {
+    return `${acc}</li><li>${animal}`;
+});
+console.log(`<ul><li>${str}</li></ul>`);*/
+
+// 6 пример
+// const str = animals.reduce((acc, item) => {
+//     if (`<li>${item}</li>` === acc) return acc
+//     return acc + `<li>${item}</li>`
+// }, `<li>${animals[0]}</li>`)
+
+
+// let numbers = [4, 6, 4, 6, 8, 9, 3, 4, 5, 7, 44, 22];
+// нахождение максимума
+/*
+let maximum = numbers.reduce(function(max, num){
+    // 1. max: 50, num: 4  if(max > num) return max
+                        //else return num  
+    // 2. max: 4, num: 6  (4 > 6)   
+    // 3. max: 6, num: 4  (6 > 4)
+    // 4. max: 6, num: 6  (6 > 6) 
+    // 5. max: 6, num: 8  (6 > 8)  
+    // 6. max: 8, num: 9  (8 > 9)  
+    if(max > num){ // если максимум больше значения текущего элемента массива
+        return max; // возвращаем максимум
+    }else{ // если максимум меньше или равен текущему элементу
+        return num; // возвращаемтекущий элемент, обновляем максимум
+    }           
+
+}, 0);
+console.log(maximum);*/
+
+// sort
+//let sortNums = [1,12,3,11,22,12,15,24,45,44,65,32,98,43,17,27];
+//let sortNums = [1,3,11,12,22,12,15,24,45,44,65,32,98,43,17,27];
+// sortNums.sort();
+// console.log(sortNums);
+//function compareNumbers(a, b) {
+//    return a - b;
+//}
+
+// -1 - значения не меняются
+
+// 1. 1 - 12 = -11 (-11 < 0) - порядок не меняем
+// 2. 12 - 3 = 9   (9 > 0) - меняем местами элементы
+// 3. 12 - 11 = 1  (1 > 0) - меняем местами элементы
+// 4. 12 - 22 = -10 (-10 < 0) - порядок не меняем
+//sortNums.sort((a,b)=>a-b);
+//console.log(sortNums);
+
+// сортируем массив объектов по возрастанию возраста юзеров
+// users.sort(function(a, b){
+//     //console.log(a, b);
+//     return b.age - a.age;
+// });
+// console.log(users);
