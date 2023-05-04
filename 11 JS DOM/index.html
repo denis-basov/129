@@ -5,24 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS</title>
-    
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body id="my-body">
 
-    <ul class="list">
+    <h1 id="head-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, nobis.</h1>
+
+    <button>Hello World</button>
+    
+    <h2 id="head-2">Самолет</h2>
+    <h3 id="head-3">Вертолет</h3>
+    <!-- получите текст элемента  id="head-3" и запишите вместо внутреннего содержимого элемента id="head-2" -->
+    
+    <ul class="list list-1">
         <li>Мандарин</li>
         <li>Капуста</li>
         <li>Баклажан</li>
         <li>Тыква</li>
     </ul>
 
-    <ul>
+    <ul class="list list-2" id="list-2">
         <li>Завтрак</li>
         <li>Обед</li>
         <li>Ужин</li>
     </ul>
 
-    <ul class="list">
+    <ul class="list list-3">
         <li>Завтрак</li>
         <li>Обед</li>
         <li>Ужин</li>
@@ -34,6 +43,31 @@
         <li>Тула</li>
         <li>Новый Уренгой</li>
     </ol>
+    
+
+    <img id="pic-1" src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" width="300"  alt="Море, пляж, закат">
+
+    <img id="pic-2" src="https://images.unsplash.com/photo-1680733026426-726ff515764a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDExfEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" width="300" alt="Дом в горах">
+
+    <h3>Форма регистрации</h3>
+    <form method="POST">
+        <label for="first_name">Имя:</label>
+        <input id="first_name"  name="first_name" type="text" placeholder="Введите имя"><br>
+
+        <label>Фамилия:</label>
+        <input id="last_name" type="text" name="last_name" placeholder="Введите фамилию"><br>
+
+        <label>Логин:</label>
+        <input type="text" name="login" placeholder="Введите логин"><br>
+
+        <label>Электронная почта:</label>
+        <input type="email" name="email" placeholder="Введите емейл" ><br>
+
+        <label>Пароль:</label>
+        <input type="password" name="password" placeholder="Введите пароль"><br>
+
+        <input id="submit-btn" type="submit" value="Зарегистрироваться">
+    </form>  
 
 
     <!-- блок с пользователями -->
@@ -67,6 +101,5 @@
         </div>
     </div>
 
-    <script defer src="script.js"></script>
 </body>
 </html>

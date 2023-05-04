@@ -1,0 +1,26 @@
+.box {
+    background: rgba(255, 25, 2, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list {
+    background-color: cornsilk;
+    border: 5px solid blueviolet;
+}
+
+.green {
+    background-color: bisque;
+    color: rgba(21, 239, 6, 0.5);
+}
+
+.superClass {
+    background-color: hsl(308, 100%, 77%);
+    border: 1px solid dashed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+}
