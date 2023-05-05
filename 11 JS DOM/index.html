@@ -12,12 +12,18 @@
 
     <h1 id="head-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, nobis.</h1>
 
-    <button>Hello World</button>
+    <button id="btn-hello">Hello World</button>
+    <button id="btn-add">Добавить</button>
     
+    <!-- <div class = 'task'>
+        <button id="btn-add">Example Text</button>
+    </div> -->
+
     <h2 id="head-2">Самолет</h2>
     <h3 id="head-3">Вертолет</h3>
     <!-- получите текст элемента  id="head-3" и запишите вместо внутреннего содержимого элемента id="head-2" -->
     
+    <button id="add-fruit">Добавить фрукт</button>  
     <ul class="list list-1">
         <li>Мандарин</li>
         <li>Капуста</li>
@@ -53,6 +59,7 @@
     <form method="POST">
         <label for="first_name">Имя:</label>
         <input id="first_name"  name="first_name" type="text" placeholder="Введите имя"><br>
+        <span class="error" id="first_name_error"></span>
 
         <label>Фамилия:</label>
         <input id="last_name" type="text" name="last_name" placeholder="Введите фамилию"><br>
@@ -69,9 +76,25 @@
         <input id="submit-btn" type="submit" value="Зарегистрироваться">
     </form>  
 
+    <!-- 'beforebegin' -->
+    <div class="container">
+        <!-- 'afterbegin' -->
+
+        <!-- элемент для вставки содержимого -->
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, illum.</p>
+        <p>Labore, illum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+        <!-- 'beforeend' -->
+    </div>
+    <!-- 'afterend' -->
+
+    <div class="new-container">
+        <h1>Hello</h1>
+    </div>
 
     <!-- блок с пользователями -->
     <div class="users"><!-- КОНТЕЙНЕР С ПОЛЬЗОВАТЕЛЯМИ  -->
+
         <div class="user user-1" id="user-1">
             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="person-1">
             <h2>Имя: Иван</h2>
@@ -96,7 +119,7 @@
             <h3>Фамилия: Сидорова</h3>
             <p>Возраст: 26</p>
             <p>Хобби: Спать</p>
-            <p>Хобби: Спать</p>
+            <p id="last-par">Хобби: Спать</p>
             <a href="#">Подробнее...</a>
         </div>
     </div>

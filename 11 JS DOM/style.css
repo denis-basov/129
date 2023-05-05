@@ -24,3 +24,22 @@
     justify-content: center;
     width: 500px;
 }
+
+.users {
+    display: flex;
+    justify-content: space-around;
+    background-color: azure;
+}
+
+.users .user {
+    background-color: rgb(206, 250, 203);
+    width: 250px;
+}
+
+.users img {
+    width: 100%;
+}
+
+img {
+    width: 200px;
+}
