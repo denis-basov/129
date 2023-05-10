@@ -461,18 +461,31 @@ addFruit.addEventListener('click', function(){
 });*/
 
 
-let firstName = document.querySelector('#first_name');
+//let firstName = document.querySelector('#first_name');
 
 // активация поля ввода текста
-firstName.addEventListener('focus', function(){
-    //console.log('Поле активировано');
-    firstName.style.background = 'rgb(206, 250, 203)';
-});
+// firstName.addEventListener('focus', function(){
+//     //console.log('Поле активировано');
+//     firstName.style.background = 'rgb(206, 250, 203)';
+// });
 
 // деактивация поля ввода текста
-firstName.addEventListener('blur', function(){
-    //console.log('Поле деактивировано');
-    firstName.style.background = 'white';
+// проверка поля ввода имени на пустоту
+let firstName = document.querySelector('#first_name'); // поле для ввода имени
+let firstNameError = document.querySelector('#first_name_error'); // спан для вывода ошибки
 
-    console.log(firstName.value);
+firstName.addEventListener('blur', function(){
+    let value = firstName.value;
+
+    if(value.length === 0){ // если пользователь ничего не ввел
+        firstNameError.textContent = 'Введите имя';// выводим в спан текст ошибки
+        firstName.style.backgroundColor = 'rgb(255,200,200)'; // красим поле ввода в красный
+    }else if(value.length < 2){ // не менее 2 символов
+        firstNameError.textContent = 'Имя должно быть не короче двух букв';
+        firstName.style.backgroundColor = 'rgb(255,200,200)';
+    }else{ // если данные введены верно
+        firstNameError.textContent = ''; // очищаем текст в спане
+        firstName.style.backgroundColor = 'rgb(171, 255, 169)'; // красим в зеленый 
+    } 
+
 });
