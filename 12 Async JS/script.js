@@ -67,11 +67,20 @@ let whereAmI = async function(country){
     // 1. формирование разметки
 
     // 1.1 формирование строки с официальными языками
-    console.log(data.languages);
+    let langStr = '';
     for( let language in data.languages){
-        
+        langStr += `<li>${data.languages[language]}</li>`;
     }
 
+    // if(data.independent){// если истина
+    //     data.independent = 'Да';
+    // }else{ // если ложь
+    //     data.independent = 'Нет';
+    // }
+    // let independent = data.independent ? 'да' : 'нет';
+    
+ 
+    // 1.2 формирование полного вывода данных о стране
     let countryStr = `
         <div class="country">
             <div class="country-img">
@@ -80,12 +89,13 @@ let whereAmI = async function(country){
             </div>
             <h2 class="name">Название: <span>${data.translations.rus.official}</span></h2>
             <p>Площадь:  <span>${data.area}</span> км/кв</p>
-            <p>Население:  <span>${data.population}</span> чел</p>
+            <p>Население:  <span>${data.population ?? 'нет данных о населении'}</span></p>
             <p>Столица(-ы):  <span>${data.capital.join(', ')}</span></p>
-            <p>Граничащие страны:  <span>${data.borders.join(', ')}</span></p>
+            <p>Граничащие страны:  <span>${ data.borders ? data.borders.join(', ') : 'нет сухопутной границы'}</span></p>
             <p>Временные зоны:  <span>${data.timezones.join(', ')}</span></p>
+            <p>Независимость:  <span>${data.independent ? 'да' : 'нет'}</span></p>
             <h3>Официальные языки: </h3>
-            <ul></ul>
+            <ul class="lang">${langStr}</ul>
         </div>
     `;
 
@@ -94,5 +104,5 @@ let whereAmI = async function(country){
 
 };
 whereAmI(userCountry);
-whereAmI('russia');
+whereAmI('australia');
 

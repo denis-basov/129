@@ -29,3 +29,8 @@
 .name span {
     color: blueviolet;
 }
+
+.lang {
+    background-color: rgb(255, 230, 230);
+    padding: 10px 30px;
+}
