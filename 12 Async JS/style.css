@@ -1,0 +1,31 @@
+.country-container {
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.country {
+    background-color: rgb(211, 218, 248);
+    width: 300px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.country-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.country-img img {
+    max-width: 45%;
+}
+
+
+.name span {
+    color: blueviolet;
+}
