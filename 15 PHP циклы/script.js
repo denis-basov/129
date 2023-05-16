@@ -10,14 +10,20 @@ const account = {
 // С помощью методов DOM создайте разметку, стили.
 // Разместите в разметке данные из объекта и поместите на страницу.
 
+let usersContainer = document.querySelector('.users');
+//console.log(usersContainer);
+
 let str = `
-    <h2>Владелец: Silvestr Stallone</h2>
-    <h3>Движения по счету: </h3>
-    <ul>
-        <li>200</li>
-        <li>-200</li>
-        <li>340</li>
-    </ul>
-    <p>Рейтинг: 99</p>
-    <p>Пин: 9999</p>
+    <div class="user" >
+        <h2>Владелец: ${account.owner}</h2>
+        <h3>Движения по счету: </h3>
+        <ul>
+            <li>${account.movements.join('</li><li>')}</li>
+        </ul>
+        <p>Рейтинг: ${account.interestRate}</p>
+        <p>Пин: ${account.pin}</p>
+    </div>
 `;
+
+usersContainer.insertAdjacentHTML('beforeend', str);
+

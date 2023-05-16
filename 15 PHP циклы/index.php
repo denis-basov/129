@@ -85,19 +85,24 @@ echo $sum;*/
 		</style>
 	</head>
 	<body>
-	<div class="cars">
-		<?php
-		foreach ($cars as $key => $value){
-			//echo $key . '<br>';
-			//	echo '<h3>Производитель: ' . $value['maker'] . '</h3>';
-			//	echo '<h3>Модель: ' . $value['model'] . '</h3>';
-			echo '<div class="car">';
-			foreach ($value as $carKey => $carValue){
-				echo "<h4>$carKey: $carValue</h4>";
-			}
-			echo '</div>';
-		}?>
-	</div>
+        <div class="cars">
+            <?php
+            foreach ($cars as $key => $value){
+                //echo $key . '<br>';
+                //	echo '<h3>Производитель: ' . $value['maker'] . '</h3>';
+                //	echo '<h3>Модель: ' . $value['model'] . '</h3>';
+                echo '<div class="car">';
+                foreach ($value as $carKey => $carValue){
+                    echo "<h4>$carKey: $carValue</h4>";
+                }
+                echo '</div>';
+            }?>
+        </div>
+        <div class="users" id="users">
+
+        </div>
+
+    <script src="script.js"></script>
 	</body>
 	</html>
 

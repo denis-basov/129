@@ -54,5 +54,17 @@ $cars = [
 			}
 		?>
 	</div>
+    <div class="cars">
+        <?php foreach ($cars as $key => $car):?>
+            <div class="car car-<?=$key+1?>">
+                <h2>Производитель: <?= $car['maker']?>, Марка: <?= $car['model']?></h2>
+                <p>Год выпуска: <?= $car['made_year']?></p>
+                <p>Максимальная скорость: <?= $car['top_speed']?> км/ч</p>
+                <p>Разгон до 100 км/ч: <?= $car['acceleration_to_100']?> с</p>
+                <p>Мощность: <?= $car['power']?> л/с</p>
+                <p>Масса: <?= $car['weight']?> кг</p>
+            </div>
+        <?php endforeach;?>
+    </div>
 </body>
 </html>
