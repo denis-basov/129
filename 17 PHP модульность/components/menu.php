@@ -1,6 +1,6 @@
 <?php
 
-$nav = [
+return [
 	'index.php' => 'Главная страница',
 	'news.php' => 'Новости',
 	'shop.php' => 'Магазин',

@@ -1,5 +1,9 @@
 <?php
+$title = 'Новости';
+//$head1 = 'Шапка страницы с новостями';
+
 require 'components/header.php';
+
 ?>
 
 <main>

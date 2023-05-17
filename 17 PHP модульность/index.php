@@ -1,4 +1,6 @@
 <?php
+    $head1 = 'Шапка главной страницы';
+
 	require 'components/header.php';
 ?>
 

@@ -1,4 +1,7 @@
 <?php
+$title = 'Магазин';
+$head1 = 'Шапка страницы магазина';
+
 require 'components/header.php';
 ?>
 
