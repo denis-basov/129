@@ -1,8 +1,4 @@
-<?php function d($arr){
-	echo '<pre>';
-	print_r($arr);
-	echo '</pre>';
-}
+<?php
 
 // ООП
 // класс - чертеж, объект - экземпляр класса
@@ -14,9 +10,13 @@
 // -> вызов в контексте объекта $newsItem->printItem();
 // :: вызов в контексте класса ScienceNews::printItem($newsItem)
 
-require 'DBConnect.php';
+require 'DBConnect.php'; // подключаем класс соединения с бд
 
-echo DBConnect::$dbName;
-echo DBConnect::$dbHost;
-echo DBConnect::$dbLogin;
-echo DBConnect::$dbPassword;
+//echo DBConnect::$dbName; // обращение к свойствам класса
+//echo DBConnect::$dbHost;
+//echo DBConnect::$dbLogin;
+//echo DBConnect::$dbPassword;
+//echo DBConnect::DB_NAME; // обращение к константе класса
+
+$pdo = DBConnect::getConnection(); // получаем объект соединения с БД
+DBConnect::d($pdo);
