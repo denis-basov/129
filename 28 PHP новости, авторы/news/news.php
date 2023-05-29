@@ -11,8 +11,13 @@ $query = "SELECT news.`id` AS news_id, `category`, `title`, `short_text`, `news_
 					FROM `news`, authors 
 					WHERE authors.id = author_id
 					ORDER BY add_date DESC;";
+/*
+$query = "SELECT id, `category`, `title`, `short_text`, `news_image`, `add_date`
+          FROM `news`";
+*/
+
 $result = $pdo->query($query); // подготавливает и выполняет запрос к БД
-// DBConnect::d( $result->fetchAll() );
+//DBConnect::d( $result->fetchAll() );
 ?>
 <!doctype html>
 <html lang="en">
@@ -69,7 +74,7 @@ $result = $pdo->query($query); // подготавливает и выполня
 				</div>
 
 				<span>Дата: <?=$news_item['add_date']?></span>
-				<a href="author_detail.php?id=<?=$news_item['author_id']?>">
+				<a href="author_detail.php?author_id=<?=$news_item['author_id']?>">
 					<span>Автор: <?=$news_item['first_name']?> <?=$news_item['last_name']?></span>
 				</a>
 				<span>Категория: <?=$news_item['category']?></span>
@@ -78,5 +83,6 @@ $result = $pdo->query($query); // подготавливает и выполня
 		<?php endwhile;?>
 		<a href="/">На главную</a>
 	</div>
+<!-- author_detail.php?author_id=2 -->
 </body>
 </html>

@@ -3,7 +3,6 @@
 // let myHobby = "Reading";
 // let userName = 'Vasya';
 
-
 // console.log(age);
 // console.log(login);
 // console.log(userName);
@@ -27,7 +26,6 @@
 // console.log(userName);
 // console.log(newLogin);
 
-
 // let car = 'volvo';
 // let color = 'blue';
 // let model = 'sedan';
@@ -47,7 +45,6 @@
 
 // console.log(catsDogs);
 
-
 // let apples = 5;
 // let bananas = 7;
 
@@ -62,7 +59,6 @@
 // console.log('В ' + mag + 'есть $(kgAp апельсинов и ' + kgM + ' мандаринов ');
 // console.log(`В ${mag} есть ${kgAp} апельсинов и ${kgM} мандаринов`);
 
-
 // let car = 'volvo';
 // let color = 'blue';
 // let year = 1989;
@@ -75,7 +71,6 @@
 
 // console.log(`Марка машины: ${car}, цвета ${color} модели ${model} совершила законопреступление на ${areaOfVideoCapture}`);
 
-
 // let car = 'volvo';
 // let color = 'blue';
 // let model = 'sedan';
@@ -83,7 +78,6 @@
 // let price = 100000;
 
 // console.log(`Название автомобиля: ${car} , Цвет авто : ${color} , модель авто : ${model} , пробег : ${mileage + 1000} миль, цена: $${price}.`);
-
 
 // let isAdmin = true;
 // let isFunny = false;
@@ -93,16 +87,14 @@
 // a b c d
 // 1 2 3 4
 
+// 3 != 5 //   3 не равно 5?
 
-// 3 != 5 //   3 не равно 5? 
-
-
-let firstName = 'Ivan';
-let lastName = 'Ivanov';
-// let age = 11;
-let hobby = 'Reading';
+let firstName = "Ivan";
+let lastName = "Ivanov";
+let age = 11;
+let hobby = "Reading";
 let isAdmin = false;
-let image = 'user.jpg';
+let image = "user.jpg";
 
 let htmlStr = `
     <div class="users">
@@ -128,7 +120,7 @@ let htmlStr = `
 // document.write(htmlStr); // вывод в документ
 
 // 1 получаем контейнер для вставки текста
-let box = document.querySelector('.box');
+let box = document.querySelector(".box");
 console.log(box);
 // 2 вставляем в контейнер сформированную разметку
-box.insertAdjacentHTML('beforeend', htmlStr);
+box.insertAdjacentHTML("beforeend", htmlStr);

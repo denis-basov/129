@@ -29,7 +29,32 @@ $result->execute( [$id] ); // 2. Выполняем запрос к бд  [4]
 //DBConnect::d($result->fetch());
 $news_data = $result->fetch(); // выбираю данные о новости из объекта
 
+//DBConnect::d($news_data);
+
+/**
+ * заменяем переносы строк \r\n\r\n на параграфы
+ * <p>Вольфф говорил \r\n\r\n о задачах на этап… \r\n\r\n Тото Вольфф: «Уик-энд в Баку \r\n\r\n был сложным для нас</p>
+ *
+ * <p>Вольфф говорил </p><p> о задачах на этап…</p><p> Тото Вольфф: «Уик-энд в Баку</p><p> был сложным для нас</p>
+ */
+$news_data['full_text'] = str_replace("\r\n", '</p><p>', $news_data['full_text']);
+
+/**
+ * $news_data['category'] - строка с категорией текущей новости (ScienceNews)
+ * запрос на получение нескольких новостей категории текущей новости
+ */
+$query = "SELECT id, title, short_text, news_image
+            FROM news
+            WHERE category = '$news_data[category]'
+            ORDER BY add_date DESC
+            LIMIT 3";
+
+$result = $pdo->query($query);
+$category_news = $result->fetchAll();
+//DBConnect::d( $category_news );
+
 // отображаем
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,6 +81,9 @@ $news_data = $result->fetch(); // выбираю данные о новости 
         }
         .news .full_text{
             font-size: 20px;
+        }
+        .news .full_text p{
+            padding-bottom: 10px;
         }
         .news img{
             width: 100%;
@@ -121,7 +149,8 @@ $news_data = $result->fetch(); // выбираю данные о новости 
             <div class="author">
                 <!-- блок отображения автора новости  -->
                 <img src="../<?=$news_data['avatar']?>" alt="<?=$news_data['last_name']?>">
-                <a href="author_detail.php?id=<?=$news_data['author_id']?>">
+                <a href="author_detail.php?author_id=<?=$news_data['author_id']?>">
+<!--            <a href="author_detail.php?author_id=2">-->
                     <p><?=$news_data['first_name']?> <?=$news_data['last_name']?></p>
                 </a>
                 <p>Возраст: <?=$news_data['age']?></p>
@@ -129,7 +158,17 @@ $news_data = $result->fetch(); // выбираю данные о новости 
             </div>
             <div class="category_news">
                 <!-- блок отображения новостей категории основной новости  -->
+                <h2>Новости категории <?=$news_data['category']?></h2>
+                <?php foreach($category_news as $news_item):?>
+                    <div class="category_news_item">
+                        <img src="../<?=$news_item['news_image']?>" alt="<?=$news_item['title']?>">
+                        <h4><?=$news_item['title']?></h4>
+                        <p><?=$news_item['short_text']?></p>
+                        <a href="news_detail.php?id=<?=$news_item['id']?>">Подробнее...</a>
+                    </div>
+                <?php endforeach;?>
             </div>
+
         </div>
     </div>
 </body>
