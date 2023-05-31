@@ -47,6 +47,12 @@ DBConnect::d($_GET);
         .box img{
             width: 100%;
         }
+
+        .error-msg{
+            color: red;
+            padding: 10px;
+            border: 3px solid red;
+        }
     </style>
 </head>
 <body>
@@ -118,15 +124,153 @@ _HTML;
                 $avatar['size'] !== 0 )
             { // если НЕ пусто, продолжаем
                 // экранируем, переносим картинку в папку, заносим данные в БД
+
+              // 1. Экранируем данные < > ' "
+              $first_name = htmlspecialchars(trim($_POST['first_name']));
+              $last_name = htmlspecialchars(trim($_POST['last_name']));
+              $login = htmlspecialchars(trim($_POST['login']));
+              $email = htmlspecialchars(trim($_POST['email']));
+              $password = htmlspecialchars(trim($_POST['password']));
+
+              // 2. Обрабатываем картинку
+              // 2.1 Формируем путь к картинке 'images/avatar.png'
+              $avatar_path = 'images/'. $avatar['size'] . '_'. time() .'_' . $avatar['name'];
+              // echo $avatar_path; // images/97314_1685534255_photo1685362216.jpeg
+
+              // 2.2 Перемещаем картинку в нужную папку
+              move_uploaded_file($avatar['tmp_name'], $avatar_path);
+
+              // 3. Записываем данные в БД
+              $query = "INSERT INTO users VALUES( ?, ?, ?, ?, ?, ?, ? );";
+              $result = $pdo->prepare($query);
+              $result->execute( [NULL, $first_name, $last_name, $login, $email, $password, $avatar_path] );
+
+              // перезагружаем страницу
+              header('Location: /');
+
             }else{ // если хоть одно поле не заполнено, ошибка.
-                echo "<h3>Вы не заполнили все поля</h3>";
+                echo "<h3 class='error-msg'>Вы не заполнили все поля</h3>";
             }
         }
 
 
+		/**
+		 * Если нажата кнопка  name="action" value="Удалить"
+		 */
+		if( isset($_POST['action']) && $_POST['action'] === "Удалить" ){
+		    // 1. Получаем ID пользователя
+            $id = (int)$_POST['id'];
+
+            // 2. Удаляем картинку пользователя
+            // 2.1 Получаем по ID ссылку на картинку
+            $query = "SELECT avatar
+                      FROM users
+                      WHERE id = ?;";
+            $result = $pdo->prepare($query);
+            $result->execute([$id]);
+            $avatar_path = $result->fetch()['avatar']; // string
+			//echo $avatar_path;
+
+            // 2.2 Проверяем, есть ли такая картинка в папке
+            if( file_exists($avatar_path) ){
+                // 2.3 Если картинка есть, удаляем
+                unlink($avatar_path);
+            }
+
+            // 3. Удаляем пользователя с указанным ID из БД
+            $query = "DELETE 
+              FROM users
+              WHERE id = ?";
+            $result = $pdo->prepare($query);
+            $result->execute([$id]);
+
+            // 4. Перезагружаем страницу
+			header('Location: /');
+        }
 
 
+		/**
+		 * Если нажата кнопка  name="action" value="Изменить"
+		 */
+		if( isset($_POST['action']) && $_POST['action'] === "Изменить" ){
+		    // 1. Получаем ID
+            $id = (int)$_POST['id'];
 
+            // 2. Получаем данные о текущем пользователе из БД по ID
+            $query = "SELECT id, first_name, last_name, login, email, password
+                      FROM users
+                      WHERE id = ?";
+            $result = $pdo->prepare($query);
+            $result->execute([$id]);
+            $user = $result->fetch();
+            //DBConnect::d($user);
+
+            // 3. Отображаем форму для изменения данных
+            echo <<<_HTML
+                <h2>Изменение пользователя $user[first_name] $user[last_name]</h2>   
+                <form method="POST" enctype="multipart/form-data">
+                    <label>Имя:</label>
+                    <input type="text" name="first_name" value="$user[first_name]"><br>
+                    
+                    <label>Фамилия:</label>
+                    <input type="text" name="last_name" value="$user[last_name]"><br>
+
+                    <label>Логин:</label>
+                    <input type="text" name="login" value="$user[login]"><br>
+                    
+                    <label>Электронная почта:</label>
+                    <input type="email" name="email" value="$user[email]"><br>
+                    
+                    <label>Пароль:</label>
+                    <input type="text" name="password" value="$user[password]"><br>
+                    
+                    <label>Аватар:</label>
+                    <input type="file" name="avatar"><br>  
+                    
+                    <input type="hidden" name="id" value="$user[id]">
+                    <input type="submit" name="action" value="Обновить">                                                
+                </form>
+_HTML;
+        }
+
+		/**
+		 * Если нажата кнопка  name="action" value="Обновить"
+         * Проверяем переданные данные и обновляем строку с пользователем в БД
+		 */
+		if( isset($_POST['action']) && $_POST['action'] === "Обновить" ){
+
+		    // проверка на пустые поля
+            if( !empty($_POST['first_name']) &&
+                !empty($_POST['last_name']) &&
+                !empty($_POST['login']) &&
+                !empty($_POST['email']) &&
+                !empty($_POST['password']) )
+            { // если все поля заполнены
+
+                // 1. Экранируем данные < > ' "
+                $first_name = htmlspecialchars(trim($_POST['first_name']));
+                $last_name = htmlspecialchars(trim($_POST['last_name']));
+                $login = htmlspecialchars(trim($_POST['login']));
+                $email = htmlspecialchars(trim($_POST['email']));
+                $password = htmlspecialchars(trim($_POST['password']));
+
+                // 2. Забираем ID
+                $id = (int)$_POST['id'];
+
+                /**
+                 * работа с картинкой
+                 */
+                // если новая картинка не передана
+                    // записываем в БД только текстовые данные
+                // если новая картинка передана
+                    // загружаем новую картинку в папку images
+                    // удаляем старую картинку
+                    // записываем данные в базу включая ссылку на новую картинку
+
+            }else{ // если хоть одно поле не заполнено, ошибка.
+                echo "<h3 class='error-msg'>Вы не заполнили все поля</h3>";
+            }
+        }
 
 
 		/**
@@ -142,6 +286,8 @@ _HTML;
         // 1. Ссылка на добавление нового пользователя
         echo "<a href='?add'>Добавить нового пользователя</a>";
 
+        // тестовый вывод юзеров
+		// DBConnect::d( $result->fetchAll() );
         // вывод пользователей в документ
         echo "<div class='container'>";
             while( $user = $result->fetch() ){
