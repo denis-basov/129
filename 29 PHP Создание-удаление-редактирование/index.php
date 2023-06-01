@@ -10,12 +10,13 @@
 
 require 'DBConnect.php';
 $pdo = DBConnect::getConnection();
-echo '<h1>$_POST</h1>';
-DBConnect::d($_POST);
-echo '<h1>$_FILES</h1>';
-DBConnect::d($_FILES);
-echo '$_GET';
-DBConnect::d($_GET);
+
+//echo '<h1>$_POST</h1>';
+//DBConnect::d($_POST);
+//echo '<h1>$_FILES</h1>';
+//DBConnect::d($_FILES);
+//echo '$_GET';
+//DBConnect::d($_GET);
 
 ?>
 <!doctype html>
@@ -258,14 +259,48 @@ _HTML;
                 $id = (int)$_POST['id'];
 
                 /**
-                 * работа с картинкой
+                 * 3. работа с новой картинкой
                  */
-                // если новая картинка не передана
-                    // записываем в БД только текстовые данные
-                // если новая картинка передана
+                $avatar = $_FILES['avatar'];
+
+                if($avatar['size'] === 0){ // если новая картинка не передана
+					// Обновляем в БД только текстовые данные
+                    $query = "UPDATE users
+                              SET first_name = ?, last_name = ?, login = ?, email = ?, password = ?
+                              WHERE id = ?";
+                    $result = $pdo->prepare($query);
+                    $result->execute([$first_name, $last_name, $login, $email, $password, $id]);
+
+                }else{ // если новая картинка передана
+                    // Формируем путь к новой картинке
+                    $avatar_path = 'images/'. $avatar['size'] . '_'. time() .'_' . $avatar['name'];
                     // загружаем новую картинку в папку images
+                    move_uploaded_file($avatar['tmp_name'], $avatar_path);
+
                     // удаляем старую картинку
+                    // 1. получаем ссылку на старую картинку
+                    $query = "SELECT avatar FROM users WHERE id = ?";
+                    $result = $pdo->prepare($query);
+                    $result->execute([$id]);
+					$del_avatar_path = $result->fetch()['avatar'];
+
+                    // 2. если картинка есть, удаляем старую картинку
+                    if(file_exists($del_avatar_path)){
+                        unlink($del_avatar_path);
+                    }
+
                     // записываем данные в базу включая ссылку на новую картинку
+                    $query = "UPDATE users 
+                    SET first_name = ?, last_name = ?, login = ?, email = ?, password = ?, avatar = ? 
+                    WHERE id = ?";
+                    $result = $pdo->prepare($query);
+                    $result->execute([$first_name, $last_name, $login, $email, $password, $avatar_path, $id]);
+
+                }
+
+                // 4. Перезагружаем страницу
+                header('Location: /');
+
 
             }else{ // если хоть одно поле не заполнено, ошибка.
                 echo "<h3 class='error-msg'>Вы не заполнили все поля</h3>";
