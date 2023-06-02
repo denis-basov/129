@@ -8,5 +8,7 @@ require 'models/News.php';
 $newsLimitList = News::getLimitNewsList();
 //DBConnect::d($newsLimitList);
 
+$title = 'Главная страница';
+
 // подключаем шаблон для отображения главной страницы
 require 'views/index_view.php';

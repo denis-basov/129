@@ -1,55 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Главная страница</title>
-	<style>
-      .news{
-          max-width: 1200px;
-          background: aliceblue;
-          margin: auto;
-          padding: 30px;
-      }
-      .news_item{
-          margin: 100px 0;
-          background: #ddf1ff;
-          padding: 30px;
-          border-radius: 10px;
-      }
-      .news_item .news_images{
-          width: 300px;
-          border-radius: 7px;
-      }
-      .news_item span{
-          margin-right: 30px;
-      }
-      .news_preview{
-          display: flex;
-          padding: 20px 0;
-          justify-content: space-around;
-          gap: 20px;
-      }
-      .news_preview p{
-          font-size: 20px;
-      }
-	</style>
-</head>
-<body>
-<!--  Шаблон главной страницы  -->
-<header>
-	<div class="logo">LOGO</div>
-	<h1>Главная страница</h1>
-	<nav>
-		<a href="/">Главная</a>
-		<a href="news.php">Новости</a>
-		<a href="authors.php">Авторы</a>
-	</nav>
-</header>
-<div class="news">
+<?php
+    $menu = require 'components/menu.php'; // получаем массив с меню
+    require 'components/header.php';
+?>
 
+<div class="news">
 	<!-- вывод новостей в цикле в документ	-->
 	<?php foreach( $newsLimitList as $news_item ):?>
 		<div class="news_item">
@@ -72,8 +26,7 @@
 		</div>
 	<?php endforeach;?>
 </div>
-<footer>
-	<h3>Главная страница</h3>
-</footer>
-</body>
-</html>
+
+<?php
+    require 'components/footer.php';
+?>

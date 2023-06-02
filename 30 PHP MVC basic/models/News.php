@@ -51,4 +51,21 @@ class News
 
 		return $result->fetch();
 	}
+
+
+	/**
+	 * @param $category - категория текущей новости
+	 * @return mixed - двумерный массив с новостями
+	 */
+	public static function getLimitNewsListByCategory($category){
+		$pdo = DBConnect::getConnection();
+
+		$query = "SELECT id, title, short_text, news_image
+            FROM news
+            WHERE category = '$category'
+            ORDER BY add_date DESC
+            LIMIT 3";
+
+		return $pdo->query($query)->fetchAll();
+	}
 }
