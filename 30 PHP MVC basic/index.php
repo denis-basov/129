@@ -10,5 +10,6 @@ $newsLimitList = News::getLimitNewsList();
 
 $title = 'Главная страница';
 
+
 // подключаем шаблон для отображения главной страницы
 require 'views/index_view.php';

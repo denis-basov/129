@@ -1,5 +1,4 @@
 <?php
-    $menu = require 'components/menu.php'; // получаем массив с меню
     require 'components/header.php';
 ?>
 
