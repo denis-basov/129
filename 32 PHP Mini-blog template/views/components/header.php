@@ -52,11 +52,13 @@
 						<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
 							<li><a href="/">Домой</a></li>
 							<li><a href="news.php">Новости</a></li>
-							<li><a href="#">Tech</a></li>
+							<li><a href="news_js.php">Новости JS</a></li>
 							<li><a href="#">Entertainment</a></li>
 							<li><a href="#">Travel</a></li>
 							<li><a href="#">Sports</a></li>
 							<li><a href="#">About</a></li>
+							<li><a href="enter.php">Вход</a></li>
+							<li><a href="registration.php">Регистрация</a></li>
 							<li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
 						</ul>
 					</nav>
