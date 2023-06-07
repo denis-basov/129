@@ -54,7 +54,46 @@ class News
 							FROM news, authors, category
 							WHERE author_id = authors.id 
 							    AND category_id = category.id
-									AND news.id = $id;";
+									AND news.id = ?;";
+		$result =	$pdo->prepare($query);
+		$result->execute([$id]);
+
+		return $result->fetch();
+	}
+
+
+	/**
+	 * метод для получения ограниченного списка новостей по идентификатору категории
+	 * для вывода в сайдбаре
+	 */
+	public static function getLimitNewsListByCategoryId($category_id, $limit){
+		$pdo = DBConnect::getConnection(); // подключаемся к бд
+
+		$query = "SELECT id, title, add_date, image
+							FROM news
+							WHERE category_id = :category_id
+							ORDER BY add_date DESC
+							LIMIT :limit;";
+
+		$result = $pdo->prepare($query);
+		$result->bindValue(':category_id', $category_id, PDO::PARAM_INT);
+		$result->bindValue(':limit', $limit, PDO::PARAM_INT);
+		$result->execute();
+
+		return $result->fetchAll();
+	}
+
+	/**
+	 * метод для получения количества новостей по каждой категории
+	 */
+	public static function getNewsCountByCategories(){
+		$pdo = DBConnect::getConnection(); // подключаемся к бд
+
+		$query = "SELECT category_id, translation, COUNT(*) AS count
+							FROM news, category 
+							WHERE category_id = category.id 
+							GROUP BY category_id;";
+		return $pdo->query($query)->fetchAll();
 	}
 
 }
