@@ -1731,3 +1731,9 @@ h1, h2, h3, h4, h5,
 .search-form-wrap form .form-control {
   border: none;
 }
+
+
+.input-error{
+  color: red;
+  font-weight: bold;
+}

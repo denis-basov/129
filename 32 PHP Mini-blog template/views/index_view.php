@@ -113,8 +113,18 @@
 					<div class="subscribe-1 ">
 						<h2>Subscribe to our newsletter</h2>
 						<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit nesciunt error illum a explicabo, ipsam nostrum.</p>
-						<form action="#" class="d-flex">
-							<input type="text" class="form-control" placeholder="Enter your email address">
+						<form action="core/form_feedback.php" class="d-flex-column" method="POST">
+
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label class="text-black">Сообщение</label>
+                                    <textarea name="message" cols="30" rows="7" class="form-control" placeholder="Напишите ваш текст здесь..."></textarea>
+                                </div>
+                            </div>
+
+<!--                            <input type="hidden" name="id" value="--><?//=$_SESSION['id']?><!--">-->
+							<input type="email" name="email" class="form-control"
+                                   placeholder="Введите ваш адрес электронной почты">
 							<input type="submit" class="btn btn-primary" value="Subscribe">
 						</form>
 					</div>
