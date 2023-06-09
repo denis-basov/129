@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,8 +60,14 @@
 							<li><a href="#">Travel</a></li>
 							<li><a href="#">Sports</a></li>
 							<li><a href="#">About</a></li>
-							<li><a href="enter.php">Вход</a></li>
-							<li><a href="registration.php">Регистрация</a></li>
+                            <!-- если клиент авторизован, показываем ссылку на ЛК -->
+                            <?php if(isset($_SESSION['valid_user'])):?>
+                                <li><a href="cabinet.php">Привет, <?=$_SESSION['valid_user']?></a></li>
+                            <?php else:?>
+                                <li><a href="enter.php">Вход</a></li>
+                                <li><a href="registration.php">Регистрация</a></li>
+                            <?php endif;?>
+
 							<li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
 						</ul>
 					</nav>
