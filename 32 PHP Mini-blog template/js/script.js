@@ -1,10 +1,9 @@
-//console.log(123);
 
 let container = document.querySelector('.news-container');
 let moreNewsBtn = document.querySelector('#more-news');
 
-console.log(container);
-console.log(moreNewsBtn);
+// console.log(container);
+// console.log(moreNewsBtn);
 
 let start = 0;
 let limit = 3;
@@ -38,16 +37,19 @@ function showPosts(data){
 async function getPosts(){
     let res = await fetch(`/server/getNewsList.php?start=${start}&limit=${limit}`);
     let data = await res.json();
-    console.log(data);
+    //console.log(data);
 
     showPosts(data);
 }
 getPosts();
 
+
 // обработка события клика по кнопке
-moreNewsBtn.addEventListener('click', function(event){
-    event.preventDefault();
-    start += limit;
-    getPosts();
-});
+if(moreNewsBtn) {
+    moreNewsBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        start += limit;
+        getPosts();
+    });
+}
 

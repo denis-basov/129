@@ -4,6 +4,7 @@
 
 class Comments
 {
+
 	/**
 	 * метод для получения комментариев конкретной новости
 	 */
@@ -36,4 +37,15 @@ class Comments
 		return $result->fetch()['news_count'];
 	}
 
+	/**
+	 * метод добавления нового комментария к новости от пользователя
+	 */
+	public static function addNewCommentToNewsItem($comment, $newsId, $userId){
+		$pdo = DBConnect::getConnection(); // подключаемся к бд
+
+		$query = "INSERT INTO comments (comment, news_id, user_id)
+													VALUES(?,?,?)";
+		$result = $pdo->prepare($query);
+		return $result->execute([$comment, $newsId, $userId]);
+	}
 }

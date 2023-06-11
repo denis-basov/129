@@ -50,33 +50,39 @@
                       <div class="comment-body">
                         <h3><?=$comment['first_name']?> <?=$comment['last_name']?></h3>
                         <div class="meta"><?=$comment['add_date']?></div>
-                        <p><?=$comment['comment']?></p>
-<!--                        <p><a href="#" class="reply rounded">Reply</a></p>-->
+                        <p><?=str_replace("\r\n", '</p><p>', $comment['comment'])?></p>
                       </div>
                     </li>
 	            <?php endforeach;?>
               </ul>
               <!-- END comment-list -->
 
-              <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">Оставить комментарий</h3>
+              <!-- если пользователь авторизован, показываем форму для комментирования  -->
+              <?php if(isset($_SESSION['user_id'])):?>
+              <!-- ADD new comment -->
+                  <div class="comment-form-wrap pt-5">
+                    <h3 class="mb-5">Оставить комментарий</h3>
 
-                <form action="forms/add_comment.php" class="p-5 bg-light" method="POST">
+                    <form action="forms/add_comment.php" class="p-5 bg-light" method="POST">
 
-                  <div class="form-group">
-                    <label for="message">Комментарий</label>
-                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                      <div class="form-group">
+                        <label for="message">Комментарий</label>
+                        <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                      </div>
+
+                      <div class="form-group">
+                        <input type="hidden" name="news_id" value="<?=$id?>">
+                        <input type="hidden" name="user_id" value="<?=$_SESSION['user_id']?>">
+                        <input type="submit" value="Отправить комментарий" class="btn btn-primary">
+                      </div>
+
+                    </form>
+
                   </div>
+              <?php endif;?>
+              <!-- END ADD new comment -->
 
-                  <div class="form-group">
-                    <input type="hidden" name="news_id" value="<?=$id?>">
-                    <input type="hidden" name="user_id" value="">
-                    <input type="submit" value="Отправить комментарий" class="btn btn-primary">
-                  </div>
 
-                </form>
-
-              </div>
             </div>
 
           </div>

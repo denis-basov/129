@@ -1,6 +1,6 @@
 <?php
 
-require 'models/News.php';
+
 
 $title = 'Новости JS';
 

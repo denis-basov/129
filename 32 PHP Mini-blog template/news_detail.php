@@ -4,8 +4,8 @@
 require 'models/News.php';
 require 'models/Comments.php';
 
-$id = (int)$_GET['id'];
-$limit = 3; // задаем ограничение по кол-ву новостей
+$id = (int)$_GET['id']; // id новости
+$limit = 3; // задаем ограничение по кол-ву новостей в сайд-баре
 
 $news_item = News::getNewsItemById($id);// получаем данные о новости по ID
 $comments = Comments::getCommentsByNewsId($id);// получаем комментарии текущей новости

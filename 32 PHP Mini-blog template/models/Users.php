@@ -49,5 +49,7 @@ class Users
 		$result->execute([$user['login'], $user['first_name'], $user['last_name'],
 										 $user['email'], $user['password'], $user['avatar']]);
 
+		return $pdo->lastInsertId();
+
 	}
 }

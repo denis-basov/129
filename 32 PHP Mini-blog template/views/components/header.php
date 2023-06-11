@@ -62,7 +62,8 @@ session_start();
 							<li><a href="#">About</a></li>
                             <!-- если клиент авторизован, показываем ссылку на ЛК -->
                             <?php if(isset($_SESSION['valid_user'])):?>
-                                <li><a href="cabinet.php">Привет, <?=$_SESSION['valid_user']?></a></li>
+                                <li><a href="cabinet.php">Привет, <?=$_SESSION['valid_user']?>. ID:
+                                    <?=$_SESSION['user_id']?></a></li>
                             <?php else:?>
                                 <li><a href="enter.php">Вход</a></li>
                                 <li><a href="registration.php">Регистрация</a></li>

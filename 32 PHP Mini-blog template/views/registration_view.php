@@ -58,8 +58,9 @@
 				<div class="row form-group">
 					<div class="col-md-12">
 						<label class="text-black">Аватар</label>
-                        <input type="file" name="avatar" class="form-control">
-                        <span class="input-error"></span>
+                        <input type="file" name="avatar" class="form-control" value="<?=$input['avatar']['name'] ??
+                        ''?>">
+                        <span class="input-error"><?=$errors['avatar'] ?? ''?></span>
 					</div>
 				</div>
 

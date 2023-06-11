@@ -98,4 +98,18 @@ class News
 		return $pdo->query($query)->fetchAll();
 	}
 
+	/**
+	 * метод для подгрузки новостей
+	 */
+	public static function getMoreNews($start, $limit){
+		$pdo = DBConnect::getConnection(); // подключаемся к бд
+
+		$query = "SELECT id, title, image
+					FROM news
+					ORDER BY add_date DESC
+					LIMIT $start, $limit;";
+
+		return $pdo->query($query)->fetchAll();
+	}
+
 }

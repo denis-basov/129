@@ -84,11 +84,29 @@ class SignUp
 	}
 
 	/**
+	 * метод для проверки аватарки
+	 */
+	private static function validateAvatar($avatar){
+		$allowedSize = 2097152;
+		$allowedExtensions = ["image/jpeg", "image/jpg", "image/png, image/gif"];
+
+		if($avatar['size'] === 0){ // Если размер 0, значит картинки нет
+			return 'Выберите аватар';
+		}elseif($avatar['size'] > $allowedSize){ // если больше 2Мб
+			return 'Размер Фото должен быть не более 2 Мегабайт';
+		}elseif(!in_array( $avatar['type'], $allowedExtensions)){ // Если не картинка
+			return 'Только картинки в форматах "jpeg", "jpg", "png", "gif".';
+		}
+	}
+
+
+
+	/**
 	 * метод для проверки данных ВСЕЙ формы
 	 */
 	public static function validateForm(){
-//		DBConnect::d($_POST);
-//		DBConnect::d($_FILES);
+		DBConnect::d($_POST);
+		DBConnect::d($_FILES);
 
 		$errors = [];
 		$input = [];
@@ -98,6 +116,7 @@ class SignUp
 		$input['login'] = htmlspecialchars(trim($_POST['login']));
 		$input['email'] = htmlspecialchars(trim($_POST['email']));
 		$input['password'] = htmlspecialchars(trim($_POST['password']));
+		$input['avatar'] = $_FILES['avatar'];
 
 
 		/**
@@ -133,6 +152,11 @@ class SignUp
 			$errors['password'] = $passwordError;
 		}
 
+		// проверка аватарки
+		$avatarError = self::validateAvatar($input['avatar']);
+		if($avatarError){
+			$errors['avatar'] = $avatarError;
+		}
 
 //		DBConnect::d($input);
 //		DBConnect::d($errors);
@@ -140,28 +164,42 @@ class SignUp
 		return [$errors, $input];
 	}
 
+	/**
+	 * метод для сохранения аватарки при успешной проверке
+	 */
+	private static function saveAvatar($avatar){
+		// создаем путь аватарки с добавлением уникальности
+		$avatarPath = 'template/images/users/'.time().'_'.$avatar['size'].'_'.$avatar['name'];
+
+		// перемещаем аватар
+		if(!move_uploaded_file($avatar['tmp_name'], $avatarPath)){
+			die('Все пропало, шеф');
+		}
+
+		// возвращаем путь для сохранения в БД
+		return $avatarPath;
+	}
 
 	/**
 	 * метод для обработки данных при успешной проверке
 	 */
 	public static function processForm($input){
-		// шифровка пароль
+		// шифровка пароля
 		$input['password'] = password_hash($input['password'], PASSWORD_DEFAULT);
 
-		// заглушка для аватарки
-		$input['avatar'] = '/template/images/users/default.png';
+		// перемещаем аватар
+		$input['avatar'] = self::saveAvatar($input['avatar']);
 
 		// добавить строку в табличку в БД
-		Users::addNewUser($input);
+		$input['user_id'] = Users::addNewUser($input);
 
 		// записать данные в сессию
 		session_start();
+		$_SESSION['user_id'] = $input['user_id'];
 		$_SESSION['valid_user'] = $input['login'];
 		// перенаправить на главную страницу
 		header('Location: /');
 	}
-
-
 
 
 
